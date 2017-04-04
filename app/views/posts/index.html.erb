@@ -1,0 +1,12 @@
+<h1>Posts#index</h1>
+<p>Find me in app/views/posts/index.html.erb</p>
+
+<h3><%= link_to '새 글 쓰기', new_post_path %></h3> <br>
+
+<% @posts.each do |p| %>
+    <%= p.title %>
+    <%= link_to '이 글 보기', post_path(p.id) %> |
+    <%= link_to '수정하기', edit_post_path(p.id) %> |
+    <%= link_to '삭제하기', post_path(p.id), method: :delete, data: { confirm: '이 글을 삭제하시겠습니까?'} %>
+    <br>
+<% end %>
