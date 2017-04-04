@@ -1,10 +1,12 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.all
+    @posts_love = @posts.where(category_id: 1)
   end
 
   def new
     @post = Post.new
+    @categories = Category.all
   end
 
   def create
@@ -39,6 +41,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content, :category_id)
     end
  end
