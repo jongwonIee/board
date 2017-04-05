@@ -2,6 +2,8 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @posts_love = @posts.where(category_id: 1)
+    @posts_life = @posts.where(category_id: 2)
+    @posts_serious = @posts.where(category_id: 3)
   end
 
   def new
@@ -22,7 +24,6 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-
   end
 
   def update
