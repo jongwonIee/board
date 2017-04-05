@@ -30,7 +30,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.update(post_params)
 
-    redirect_to @post
+    redirect_to posts_path
 
   end
 
