@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authorize, only: [:new, :edit, :update, :destroy]
+
   def index
     @posts = Post.all
     @posts_love = @posts.where(category_id: 1)
@@ -13,6 +15,7 @@ class PostsController < ApplicationController
 
   def create
     post = Post.new(post_params)
+    post.user_id = current_user.id
     post.save
 
     redirect_to posts_path
@@ -42,6 +45,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :category_id)
+    params.require(:post).permit(:user_id, :title, :content, :category_id)
     end
  end

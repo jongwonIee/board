@@ -1,6 +1,4 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
-
+New Post
 <%= form_for @post do |f| %>
     <%= f.select :category_id, options_from_collection_for_select(@categories, "id", "name") %><br>
     <%= f.text_field :title, placeholder: '제목을 입력해주세요' %><br>
