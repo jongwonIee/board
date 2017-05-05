@@ -9,7 +9,10 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def authorize
-    redirect_to login_url if current_user.nil?
+    if current_user.nil?
+      redirect_to login_url
+    elsif current_user != Post.find(params[:id]).user
+      redirect_to root_url
+    end
   end
-
 end
